@@ -1,0 +1,67 @@
+Files:
+
+index.html
+courses.csv
+courses.js
+style.css
+Graphics (folder)
+
+index.html:
+
+All the page's HTML and JavaScript scripts are stored here.
+
+courses.csv:
+
+All courses loaded into the tool are stored here. Courses can be added or removed at any time. The order that courses are listed in the csv does not matter.
+
+How to add a new course:
+You must complete all columns as follows:
+number:
+- course number excluding department code, letters are acceptable if they occur in the fourth place of the number as in 694H
+
+name:
+- The name of the course
+
+starter:
+- Is the course considered a starter course in the COMM curriculum?: TRUE or FALSE
+
+COMM Exp:
+- Is the course considered a COMM Experience course in the COMM curriculum?: TRUE or FALSE
+
+modes of inquiry:
+- Is the course considered a modes of inquiry course in the COMM curriculum?: TRUE or FALSE
+
+representation:
+- Is the course considered a representation, identity, and difference course in the COMM curriculum?: TRUE or FALSE
+
+cel:
+- Is the course in the communication and everyday life pathway?: TRUE or FALSE
+
+mapc:
+- Is the course in the Media Arts, Performance, and Critical Practice pathway?: TRUE or FALSE
+
+mtpc:
+- Is the course in the Media Technology and Public Culture pathway?: TRUE or FALSE
+
+ocw:
+- Is the course in the Organization, Communication and Work pathway?: TRUE or FALSE
+
+raa:
+- Is the course in the Rhetoric, Activism, and Advocacy pathway?: TRUE or FALSE
+
+prereqs:
+- List of prereqs for the course; Always include department code in front of the course number (no numbers in isolation), separate each course with either 'and' or 'or', do not use commas, use NA where there are no prerequisite courses, you can include more precise instructions in brackets where the text necessary to explain the requirements cannot be simplified (rare)
+	-example:
+	DO: COMM 160 or COMM 260 or COMM 263
+	DONT: COMM 160, COMM 260, or COMM 263
+
+	DO: COMM 230 and one of COMM 534, 635, 646, 653, or 654 [COMM 230 and COMM 534 or COMM 635 or COMM 646 or COMM 653 or COMM 654]
+	Appears as (brackets omitted): COMM 230 and one of COMM 534, 635, 646, 653, or 654
+
+ideas:
+- List of ideas in action curriculum requirements met by the course, no special formatting required, current list uses all caps codes provided by the course catalog, use NA where there is no ideas in action distinction
+
+description:
+- description of the course, OK to omit
+
+This COMM curriculum planning tool was created by Zoe Anderson (zande@unc.edu).

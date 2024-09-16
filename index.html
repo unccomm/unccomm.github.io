@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <title>COMM Course Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+    <script src="courses.js" defer></script>
+</head>
+
+<body>
+<div id = "main-container">
+    <div id = "main content"> 
+
+        <div class = 'white-div' style = "text-align: center; width: auto; ">
+            <h2>Select a Pathway to Begin</h2>
+
+            <p>Pathway descriptions can be found at the top of the page. Courses belonging within that pathway will populate the selection fields.</p>
+
+            <select class = 'selectPath' id="pathway-select" name="Pathway Select" style = "margin: auto;">
+                <option value="" disabled selected>Select a pathway</option>
+                <option value="cel">Communication and Everyday Life</option>
+                <option value="mapc">Media Arts, Performance, and Critical Practice</option>
+                <option value="mtpc">Media Technology and Public Culture</option>
+                <option value="ocw">Organization, Communication and Work</option>
+                <option value="raa">Rhetoric, Activism, and Advocacy</option>
+            </select>
+            <div id = "new-media" style = "display: none; padding: 20px;">
+                Would you like to pursue the New Media track?
+                <input type="checkbox" id="new-media-check"></input>
+            </div>
+            <h2 id = "pathway-title"></h2>
+        </div>
+
+        <div class="white-div">
+            COMM 100 Communication and Social Process is the only required course for all COMM majors.
+             Select the course and add to your plan. As you select courses, the sidebar will indicate your progress toward fulfilling your degree requirements within that pathway. 
+        </div>
+
+        <div class="course" id = 'C100' style="display: block; margin:auto; width:250px; border-style: solid; border-color: #737373;">
+            <span style = "line-height: 50px; text-align: center; vertical-align: middle;">COMM 100</span>
+        </div>
+        <br>
+        <div id="description100" class="description">
+            <p>Click on a course to show its description here.</p>
+        </div>
+            
+        <h2 class = 'secondary-panel'>Lower Level Courses (100-300 level)</h2>
+            
+        <div class="white-div">
+            Students must take at least three of these courses, at least two of which must be starter courses. 
+            Your starter courses should both be in the <b>same pathway</b>, but your third lower level course can be in any pathway. Starter courses are light blue in color.
+        </div>
+
+        <div class = "filter-div">
+            <img src="Graphics/filter.png" alt="Sort and Filter" class = "filter-img"/>
+            <div id = "lowerGrid-filter">
+                <div class = "filter">                    
+                    <div style = "white-space: nowrap;">
+                        <label for="m-box-lowerGrid">Modes of Inquiry</label>
+                        <input type="checkbox" id="m-box-lowerGrid"></input>
+                    </div>
+
+                    <div style = "white-space: nowrap;">
+                        <label for="r-box-lowerGrid">Representation Identity and Difference</label>
+                        <input type="checkbox" id="r-box-lowerGrid"></input>
+                    </div>
+
+                    <div style = "white-space: nowrap;">
+                        <label for="h-box-lowerGrid">COMM Experience</label>
+                        <input type="checkbox" id="h-box-lowerGrid"></input>
+                    </div>
+                    <div style = "white-space: nowrap;">
+                        <label for="starter-box-lowerGrid">Starter Courses</label>
+                        <input type="checkbox" id="starter-box-lowerGrid"></input>
+                    </div>
+                </div>
+                <div>
+                    <select id="lowerGrid-sort" name="sort direction">
+                        <option value="ascend">Ascending</option>
+                        <option value="descend">Descending</option>
+                    </select>
+
+                    <button onclick = 'sortAndFilter("lowerGrid")'>
+                        Sort and Filter
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id = "lowerGrid" class = "course-grid">
+            <div class="grid-text">Select a pathway to get started</div>
+        </div>
+        
+        <div id="description1" class="description">
+            <p>Click on a course to show its description here.</p>
+        </div>
+        
+        <h2 class="secondary-panel">Upper Level Courses (400-600 Level)</h2>
+
+        <div class="white-div">
+            Students are required to take at least three upper level courses. At least two of these courses should be within your chosen pathway.
+        </div>
+        
+        <div class = "filter-div">
+            <img src="Graphics/filter.png" alt="Sort and Filter" class = "filter-img"/>
+            <div id = "upperGrid-filter">
+                <div class = "filter">
+                    <div style = "white-space: nowrap;">
+                        <label for="m-box-upperGrid">Modes of Inquiry</label>
+                        <input type="checkbox" id="m-box-upperGrid"></input>
+                    </div>
+
+                    <div style = "white-space: nowrap;">
+                        <label for="r-box-upperGrid">Representation Identity and Difference</label>
+                        <input type="checkbox" id="r-box-upperGrid"></input>
+                    </div>
+
+                    <div style = "white-space: nowrap;">
+                        <label for="h-box-upperGrid"> COMM Experience</label>
+                        <input type="checkbox" id="h-box-upperGrid"></input>
+                    </div>
+                </div>
+                <div>
+                    <select id="upperGrid-sort" name="sort direction">
+                        <option value="ascend">Ascending</option>
+                        <option value="descend">Descending</option>
+                    </select>
+
+                    <button onclick = 'sortAndFilter("upperGrid")'>
+                        Sort and Filter
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id = "upperGrid" class = "course-grid">
+            <div class="grid-text">Select a pathway to get started</div>
+        </div>
+        
+        <div id="description2" class="description">
+            <p>Click on a course to show its description here.</p>
+        </div>
+    
+
+        <h2 class = 'secondary-panel'>Elective Courses</h2>
+        <div class="white-div">
+            Once you have satisfied the requirements for lower and upper level courses, you are free to select courses in any pathway at any course level. 
+            Three elective courses are required to obtain your minimum total of ten courses.
+        </div>
+
+        <div class = "filter-div">
+            <img src="Graphics/filter.png" alt="Sort and Filter" class = 'filter-img'/>
+            <div id = "elecGrid-filter">
+                <div class = "filter">
+                    <div style = "white-space: nowrap;">
+                        <label for="m-box-elecGrid">Modes of Inquiry</label>
+                        <input type="checkbox" id="m-box-elecGrid"></input>
+                    </div>
+
+                    <div style = "white-space: nowrap;">
+                        <label for="r-box-elecGrid">Representation Identity and Difference</label>
+                        <input type="checkbox" id="r-box-elecGrid"></input>
+                    </div>
+
+                    <div style = "white-space: nowrap;">
+                        <label for="h-box-elecGrid">COMM Experience</label>
+                        <input type="checkbox" id="h-box-elecGrid"></input>
+                    </div>
+
+                    <div style = "white-space: nowrap;">
+                        <label for="starter-box-elecGrid">Starter Courses</label>
+                        <input type="checkbox" id="starter-box-elecGrid"></input>
+                    </div>
+                </div>
+                <div>
+                    <select id="elecGrid-sort" name="sort direction">
+                        <option value="ascend">Ascending</option>
+                        <option value="descend">Descending</option>
+                    </select>
+
+                    <button onclick = 'sortAndFilter("elecGrid")'>
+                        Sort and Filter
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id = "elecGrid" class="course-grid">
+            <div class="grid-text">Select a pathway to get started</div>
+        </div>
+
+        <div id="description3" class="description">
+            <p>Click on a course to show its description here.</p>
+        </div>
+
+        <h2>My Degree Plan</h2>
+        <div class = "info-panel">
+
+            <div >
+
+                <button onclick = "clearCourses()" style = "float: right;">Clear Courses</button>
+
+                <h3>Selected Courses</h3>
+                <div id='course-plan'>
+
+                </div>
+
+                <div id="warnings">
+
+                </div>
+            </div>
+
+            <div>
+                <select class = "selectPath" name="Pathway Select">
+                    <option value="" disabled selected>Try a different pathway</option>
+                    <option value="cel">Communication and Everyday Life</option>
+                    <option value="mapc">Media Arts, Performance, and Critical Practice</option>
+                    <option value="mtpc">Media Technology and Public Culture</option>
+                    <option value="ocw">Organization, Communication and Work</option>
+                    <option value="raa">Rhetoric, Activism, and Advocacy</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<aside id = "course-aside" class = 'info-panel'>
+
+    <div id = 'default-checklist'>
+        <p><b style = "font-size: 20px;">Checklist:</b></p>
+        <div class = "checklist">
+            <div>
+                <div><span class = 'check' id = 'checkbox100'>☐</span>COMM 100 (<span id="check100">0</span>/1)</div>
+                <div id = "new-media-box" style = "display: none;"><span class = 'check' id = 'checkbox140'>☐</span>COMM 140 (<span id="check140">0</span>/1)</div>
+                <div><span class = 'check' id = 'checkboxStarter'>☐</span>Starter courses (<span id="checkStarter">0</span>/2)</div>
+                <div><span class = 'check' id = 'checkboxLow'>☐</span>Lower Level Courses (<span id="checkLow">0</span>/3)</div>
+                <div><span class = 'check' id = 'checkboxHigh'>☐</span>Upper Level Courses (<span id="checkHigh">0</span>/3)</div>
+                <div><span class = 'check' id = 'checkboxElec'>☐</span>COMM Electives (<span id="checkElec">0</span>/3)</div>
+            </div>
+            <div>
+                <div><span id="checkboxM" class = 'check'>☐</span>Modes of Inquiry (<span id="checkM">0</span>/1)</div>
+                <div><span id="checkboxR" class = 'check'>☐</span>Representation, Identity, and Difference (<span id="checkR">0</span>/1)</div>
+                <div><span id="checkboxH" class = 'check'>☐</span>COMM Experience (<span id="checkH">0</span>/1)</div>
+                <div><span id="checkboxHours" class = 'check'>☐</span>Credit hours (<span id="hours">0</span>/30)</div>
+            </div>
+        </div>
+    </div>
+
+    <p><b>Progress:</b></p>
+    <div class="progress-bar">
+        <div id = 'bar' class="progress-fill mtpc">
+            &nbsp;
+        </div>
+    </div>
+    <span id="new-media-warning" class='warning-text' style="display: none;">*assuming all requirements outside the COMM department are met</span>
+    
+    <div id="warnings" class='warning-text' style="display: none;">You cannot add more than 15 courses.</div>
+    <div id = "aside-grid" style="display: grid; grid-template-columns: 1fr auto;">
+        <div id="course-list">
+
+        </div>
+        <div id = 'removeButton-list'>
+
+        </div>
+    </div>
+</aside>
+
+<script defer>
+
+    let degreePlan = [];
+    let takenCourses = [];
+    let selectedPathway = '';
+    let newMediaChosen = false;
+
+    function selectBox(){
+        document.querySelectorAll('.course').forEach(btn => btn.classList.remove('clicked'));
+        this.classList.add('clicked');
+    }
+
+    window.matchMedia('(max-width: 600px)').addEventListener('change', handleMobileChecklist);
+
+    function handleMobileChecklist(e) {
+        const element = document.getElementById('course-aside');
+  
+        if (e.matches) {
+            window.addEventListener('scroll', handleScroll)
+        }
+        else{
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }
+
+    function handleScroll() {
+        const element = document.getElementById('course-aside');
+
+        const scrollPosition = window.innerHeight + window.scrollY;
+        const nearBottom = document.body.offsetHeight - 100;
+
+        if (scrollPosition >= nearBottom) {
+            element.style.bottom = 'auto';
+            element.style.top = '0px';
+        } else {
+            element.style.bottom = '0px';
+            element.style.top = 'auto';
+        }
+    }
+
+    const mediaQuery = window.matchMedia('(max-width: 600px)');
+    handleMobileChecklist(mediaQuery);
+
+    //load all courses into array before anything else
+    document.addEventListener('DOMContentLoaded', () => {
+        parseCSV(() => {
+            checkSessionData();
+        });
+    });
+
+    //check for session data
+    function checkSessionData(){
+        if (sessionStorage.getItem('path') !== null){
+            document.getElementById('C100').onclick = function(){
+                populateDescription(C100, '100', false);
+            };
+            selectedPathway = sessionStorage.getItem('path');
+            document.getElementById('bar').setAttribute('class', 'progress-fill ' + selectedPathway);
+            loadGrids();
+        }
+        if(sessionStorage.getItem('new-media') !== null){
+            newMediaChosen = sessionStorage.getItem('new-media') === 'true';
+            if (selectedPathway == "mapc"){
+                document.getElementById('new-media').style.display = 'block';
+                if(newMediaChosen){
+                    document.getElementById('new-media-check').checked = true;
+                }
+            }
+            document.getElementById('new-media-check').addEventListener("change", function() {
+                newMediaChosen = this.checked;
+                loadGrids();
+                updateChecks();
+            });
+        }
+        if (sessionStorage.getItem('plan') !== null){
+            plan = JSON.parse(sessionStorage.getItem('plan'));
+            degreePlan = plan.map(item => new Course(item.number, item.name, item.starter, item.h, item.m, item.r, item.cel, item.mapc, item.mtpc, item.ocw, item.raa, item.newMedia, item.prereqs, item.ideas, item.description));
+            //load course plan
+            degreePlan.forEach(course => {
+                populateGridAdd(course);
+                updateChecks();
+            });
+        }
+        updateChecks();
+    }
+
+    //add event listeners to the <select> elements
+    document.addEventListener("DOMContentLoaded", function() {
+        selectors = document.querySelectorAll('.selectPath');
+        selectors.forEach(selector => {
+            selector.addEventListener("change", function() {
+                handleSelectChange(selector);
+            });
+        });
+       
+        function handleSelectChange(selector){
+            //only allow COMM100 to be added if there is a pathway selected
+            document.getElementById('C100').onclick = function(){
+                populateDescription(C100, '100', false);
+            };
+            selectedPathway = selector.value;
+            sessionStorage.setItem('path', selectedPathway);
+            if (selectedPathway == 'mapc'){
+                document.getElementById('new-media').style.display = 'block';
+                if(newMediaChosen){
+                    document.getElementById('new-media-check').checked = true;    
+                }
+                document.getElementById('new-media-check').addEventListener("change", function() {
+                    newMediaChosen = this.checked;
+                    loadGrids();
+                    updateChecks();
+                });
+            }
+            else{
+                document.getElementById('new-media').style.display = 'none';
+                newMediaChosen = false;
+            }
+            
+            document.getElementById('bar').setAttribute('class', 'progress-fill ' + selectedPathway);
+            loadGrids();
+            updateChecks();
+        }
+    });
+
+    function loadGrids(){
+        //Depending on the current pathway load courses of that pathway into the grids, place all courses in electives grid
+        document.getElementById('lowerGrid').innerHTML = '';
+        document.getElementById('upperGrid').innerHTML = '';
+        document.getElementById('elecGrid').innerHTML = '';
+        courseArray.sort((a, b) => (String(a.number)).substring(0, 3) - (String(b.number)).substring(0, 3));
+        courseArray.forEach(course => {
+            courseDiv = document.createElement('div');
+            courseDiv.setAttribute('id', "C" + course.number);
+            course.toDiv(courseDiv);
+            //selection box behavior
+            courseDiv.addEventListener('click', selectBox);
+            if (course[selectedPathway]){
+                if (course.number < 400){
+                    courseDiv.onclick = function(){
+                        populateDescription(course, "1", false);
+                    };
+                    document.getElementById('lowerGrid').appendChild(courseDiv);
+                }
+                if (course.number >= 400){
+                    //unless we have chosen new media and the course is not new media
+                    if (!(newMediaChosen && !course.newMedia)){
+                        courseDiv.onclick = function(){
+                            populateDescription(course, "2", false);
+                        };
+                        document.getElementById('upperGrid').appendChild(courseDiv);
+                    }
+                }
+            }
+            const courseCopy = courseDiv.cloneNode(true);
+            courseCopy.addEventListener('click', selectBox);
+            courseCopy.setAttribute('id', course.number);
+            courseCopy.onclick = function(){
+                populateDescription(course, "3", false);
+            }
+            document.getElementById('elecGrid').appendChild(courseCopy);            
+        });
+    }
+
+    function toggleVisibility(elementID, displayType){
+        //Toggles visibility of an element
+        const element = document.getElementById(elementID);
+        if (window.getComputedStyle(element).display === 'none'){
+            element.style.display = displayType;
+        }
+        else{
+            element.style.display = 'none';
+        }
+    }
+
+    function addToPlan(course) {
+        //If the course to be added is not already in the degree plan and the degree plan is not too long, add the course 
+        if(!(degreePlan.some(item => item.number == course.number) || degreePlan.length >= 15)) {
+            degreePlan.push(course);
+
+            //update course-plan
+            populateGridAdd(course);
+            
+            //update checklist
+            updateChecks();
+        }
+
+        if (degreePlan.length >= 15){
+            document.getElementById("warnings").style.display = 'inline';
+        }
+
+        sessionStorage.setItem('plan', JSON.stringify(degreePlan));
+    }
+
+    function populateGridAdd(course){
+        let courseDiv = document.createElement('div');
+        course.toDiv(courseDiv);
+
+        let removeButton = document.createElement('div');
+        removeButton.setAttribute('class', 'remove');
+        removeButton.textContent = "x";
+        removeButton.onclick = function() {
+            removeFromPlan(course);
+        };
+
+        courseDiv.querySelector('.spec-area').appendChild(removeButton);
+        document.getElementById('course-plan').appendChild(courseDiv);
+    }
+
+    function disableCourse(course){
+        //be sure not to call if the element does not exist
+        courseDiv = document.getElementById("C" + course.number);
+        elecDiv = document.getElementById(course.number);
+        if (elecDiv !== null){
+            elecDiv.classList.add('forbidden');
+            elecDiv.onclick = () => {
+                populateDescription(course, "3", true);
+            };
+        }
+        if (courseDiv !== null){
+            courseDiv.classList.add('forbidden');
+            if (course.number >= 400){
+                courseDiv.onclick = () => {
+                    populateDescription(course, "2", true);
+                };
+            }
+            if (course.number < 400){
+                courseDiv.onclick = () => {
+                    populateDescription(course, "1", true);
+                };
+            }
+        }
+    }
+
+    function enableCourse(course){
+        courseDiv = document.getElementById("C" + course.number);
+        elecDiv = document.getElementById(course.number);
+        if(elecDiv !== null){
+            elecDiv.classList.remove('forbidden');
+            elecDiv.onclick = () => {
+                populateDescription(course, "3", false);
+            };
+        }
+        if(courseDiv !== null){
+            courseDiv.classList.remove('forbidden');
+            if (course.number >= 400){
+                courseDiv.onclick = () => {
+                    populateDescription(course, "2", false);
+                };
+            }
+            if (course.number < 400){
+                courseDiv.onclick = () => {
+                    populateDescription(course, "1", false);
+                };
+            }
+        }
+    }
+
+    function updateChecks(){
+        //determines the progress in each requirement beneath the checklist based on courses in degreePlan
+
+        //get all checkbox elements
+        const checkbox100 = document.getElementById("checkbox100");
+        const checkboxStarter = document.getElementById('checkboxStarter');
+        const checkboxLow = document.getElementById('checkboxLow');
+        const checkboxHigh = document.getElementById('checkboxHigh');
+        const checkboxElec = document.getElementById('checkboxElec');
+        const checkboxM = document.getElementById('checkboxM');
+        const checkboxR = document.getElementById('checkboxR');
+        const checkboxH = document.getElementById('checkboxH');
+        const checkboxHours = document.getElementById('checkboxHours');
+        const checkbox140 = document.getElementById("checkbox140");
+
+        sessionStorage.setItem('new-media', newMediaChosen);
+        if (newMediaChosen){
+            document.getElementById("new-media-box").style.display = "inline";
+            document.getElementById("new-media-warning").style.display = "inline";
+        }
+        else{
+            document.getElementById("new-media-box").style.display = "none";
+            document.getElementById("new-media-warning").style.display = "none";
+        }
+
+        const has100 = degreePlan.some(course => course.number === "100");
+        const has140 = degreePlan.some(course => course.number === "140");
+        let nonpathLow = false;
+        let nonpathHigh = false;
+        const numStarter = (degreePlan.filter(course => (course.starter == true) && (course[selectedPathway] == true))).length;
+        let numLow = 0;
+        let numHigh = 0;
+        let numElec = 0;
+
+        degreePlan.forEach(course => {
+            if (course.number < 400 && course.number !== "100" && numLow < 3 && (course[selectedPathway] == true || !nonpathLow)){
+                numLow++;
+                if (!nonpathLow){
+                    nonpathLow = true;
+                }
+            }
+            else if (course.number >= 400 && numHigh < 3 && (course[selectedPathway] == true || !nonpathHigh)){
+                numHigh++;
+                if (!nonpathHigh){
+                    nonpathHigh = true;
+                }
+            }
+            else if (course.number !== "100"){
+                numElec++;
+            }
+        });
+
+        const hasM = degreePlan.some(course => course.m == true);
+        const hasR = degreePlan.some(course => course.r == true);
+        const hasHI = degreePlan.some(course => course.h == true);
+        
+        document.getElementById('check100').innerHTML = String(Number(has100));
+        document.getElementById('check140').innerHTML = String(Number(has140));
+        document.getElementById("checkStarter").innerHTML = numStarter;
+        document.getElementById("checkLow").innerHTML = numLow;
+        document.getElementById("checkHigh").innerHTML = numHigh;
+        document.getElementById("checkElec").innerHTML = numElec;
+        document.getElementById("checkM").innerHTML = String(Number(hasM));
+        document.getElementById("checkR").innerHTML = String(Number(hasR));
+        document.getElementById("checkH").innerHTML = String(Number(hasHI));
+
+        //check if the conditions that warrant a checked box have been met and switch to checked box if necessary (and vice versa)
+        function toggleCheck(element, checked){
+            if(checked){
+                element.innerHTML = "☑";
+            }
+            else{
+                element.innerHTML = '☐';
+            }
+        }
+
+        toggleCheck(checkbox100, has100);
+        toggleCheck(checkboxStarter, (numStarter >= 2));
+        toggleCheck(checkboxLow, (numLow >= 3));
+        toggleCheck(checkboxHigh, (numHigh >= 3));
+        toggleCheck(checkboxElec, (numElec >= 3));
+        toggleCheck(checkboxM, hasM);
+        toggleCheck(checkboxR, hasR);      
+        toggleCheck(checkboxH, hasHI);
+        toggleCheck(checkbox140, has140);
+        toggleCheck(checkboxHours, (degreePlan.length * 3) >= 30);
+
+        document.getElementById("hours").innerHTML = degreePlan.length * 3;
+
+        //extra warnings
+        document.getElementById('warnings').innerHTML = '';
+        const starters = degreePlan.filter(course => course.starter == true);
+        let cStart = 0;
+        let maStart = 0;
+        let mtStart = 0;
+        let oStart = 0;
+        let rStart = 0;
+        starters.forEach(course =>{
+            if(course.cel){
+                cStart++;
+            }
+            if(course.mapc){
+                maStart++;
+            }
+            if(course.mtpc){
+                mtStart++;
+            }
+            if(course.ocw){
+                oStart++;
+            }
+            if(course.raa){
+                rStart++;
+            }
+        });
+        if(cStart < 2 && maStart < 2 && mtStart < 2 && oStart < 2 && rStart < 2){
+            document.getElementById("warnings").innerHTML += "<p class='warning-text'>You need two starter courses in the same pathway.<p>";
+        }
+
+        //update title
+        const title = document.getElementById("pathway-title")
+        if(selectedPathway == "cel"){
+            title.innerHTML = "Communication and Everyday Life";
+        }
+        if(selectedPathway == "mapc"){
+            title.innerHTML = "Media Arts, Performance, and Critical Practice";
+            if(newMediaChosen){
+                title.innerHTML += ": New Media Track";
+            }
+        }
+        if(selectedPathway == "mtpc"){
+            title.innerHTML = "Media Technologies and Public Culture";
+        }
+        if(selectedPathway == "ocw"){
+            title.innerHTML = "Organization, Communication, and Work";
+        }
+        if(selectedPathway == "raa"){
+            title.innerHTML = "Rhetoric, Activism, and Advocacy";
+        }
+
+        //update progress bar
+        let points = Number(has100) + Math.min(numStarter, 2) + Math.min(numLow, 3) + Math.min(numHigh, 3) + Math.min(numElec, 3) + Number(hasM) + Number(hasHI) + Number(hasR);
+        if (newMediaChosen){
+            points += Number(has140);
+            document.getElementById('bar').style.width = String(points / 16 * 100) + "%";
+        }
+        else{
+            document.getElementById('bar').style.width = String(points / 15 * 100) + "%";
+        }
+
+        //repopulate descriptions
+        descriptions = document.querySelectorAll(".description");
+        displayCourses = [];
+        descriptions.forEach(box => {
+            if (box.querySelector('div') !== null){
+                courseNum = box.querySelector('div').textContent.match(/COMM (\d+)/)[1];
+                displayCourses.push(courseNum);
+            }
+            else{
+                displayCourses.push(null);
+            }
+        });
+
+        //update disabled and enabled courses
+        courseArray.forEach(item => {
+            let forbidden = false;
+            if(degreePlan.some(course => course.ideas && course.ideas.includes("FY-SEMINAR")) && item.ideas.includes("FY-SEMINAR")){
+                forbidden = true;
+            }
+            
+            if(!(checkPrereqs(parsePrereqs(item.prereqs)))){
+                forbidden = true;
+            }
+            
+            if(forbidden){
+                disableCourse(item);
+                if(displayCourses.includes(item.number)){
+                    populateDescription(item, String(displayCourses.indexOf(item.number)), true);
+                }
+            }
+            else{
+                enableCourse(item);
+                if(displayCourses.includes(item.number)){
+                    populateDescription(item, String(displayCourses.indexOf(item.number)), false);
+                }
+            }
+        });
+
+    }
+
+    function removeFromPlan(course){
+        //mutates the degreePlan array by removing the designated course from the array; Repopulates the course list aside
+        degreePlan = degreePlan.filter(function(item) {
+            return item !== course;
+        });
+
+        //repopulate the course-plan
+        const coursePlan = document.getElementById('course-plan');
+        coursePlan.innerHTML = '';
+        degreePlan.forEach(element => {
+            const courseDiv = document.createElement('div');
+            element.toDiv(courseDiv);
+
+            let removeButton = document.createElement('div');
+            removeButton.setAttribute('class', 'remove');
+            removeButton.textContent = "x";
+            removeButton.onclick = function() {
+                removeFromPlan(element);
+            };
+
+            courseDiv.querySelector('.spec-area').appendChild(removeButton);
+            document.getElementById('course-plan').appendChild(courseDiv);
+        });
+
+        //remove course-cap warning if needed
+        if (document.getElementById("warnings").style.display == "inline"){
+            document.getElementById("warnings").style.display = "none";
+        }
+
+        updateChecks();
+        sessionStorage.setItem('plan', JSON.stringify(degreePlan));
+    }
+
+    function parsePrereqs(prereqs) {
+        if (prereqs === "NA") {
+            return null;  // No prerequisites
+        }
+        const startIndex = prereqs.indexOf("[");
+        const endIndex = prereqs.indexOf("]");
+        
+        if (startIndex !== -1 && endIndex !== -1 && endIndex > startIndex) {
+            prereqs = prereqs.slice(startIndex + 1, endIndex);
+        }
+        let andParts = prereqs.split(" and ").map(part => {
+                return part.split(" or ").map(course => course.trim());
+            });
+
+            return andParts;
+    }
+
+    function checkPrereqs(parsedPrereqs) {
+        if (!parsedPrereqs) return true;
+
+        for (let andGroup of parsedPrereqs) {
+            const groupSatisfied = andGroup.some(course => 
+            degreePlan.some(completed => course.includes("COMM " + completed.number)) || takenCourses.includes(course)
+            );
+
+            if (!groupSatisfied) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    function populateDescription(course, divID, disabled){
+        //populates a given description box with information from a selected course
+        let lowDes = document.getElementById("description" + divID);
+        lowDes.innerHTML = '';
+        if (!disabled) {
+            const button = document.createElement('button');
+            button.className = 'add';
+            button.id = 'add' + divID;
+            button.textContent = 'Add Course';
+            button.onclick = function() {
+                addToPlan(course);
+            };
+            lowDes.appendChild(button);
+        }
+
+        const courseDetails = document.createElement('div');
+        courseDetails.innerHTML = `
+            <p>Course details: COMM ${course.number}: ${course.name}</p>
+            <p>${course.description}</p>
+        `;
+
+        if (course.prereqs !== "NA") {
+            let prereqs = course.prereqs
+            const bracketIndex = prereqs.indexOf("[");
+            if (bracketIndex !== -1) {
+                prereqs = prereqs.slice(bracketIndex + 1, prereqs.indexOf("]"));
+            }
+            if(disabled){
+                courseDetails.innerHTML += `
+                    <p style = "color:red">Prequisites: ${prereqs} (not satisfied)</p>
+                `;
+            }
+            else{
+                courseDetails.innerHTML += `
+                    <p>Prequisites: ${prereqs}</p>
+                `;
+            }
+
+            const allCoursesPattern = /\b\w+ \d+/g;
+
+            let allCourses = prereqs.match(allCoursesPattern) || [];
+            let nonCommCourses = allCourses.filter(course => !course.startsWith("COMM"));
+
+            function updateOutsideCourses(event, outsideCourse){
+                //mutates takenCourses each time a checkbox state changes
+                const checkbox = event.target;
+                if (checkbox.checked && !takenCourses.includes(outsideCourse)) {
+                    takenCourses.push(outsideCourse);
+                } else {
+                    takenCourses = takenCourses.filter(courses => outsideCourse !== courses);
+                }
+                updateChecks();
+
+            }
+
+            if (nonCommCourses.length > 0) {
+                nonCommCourses.forEach(nonComm => {
+                    let container = document.createElement('div');
+                    let courseCheck = document.createElement('input');
+                    courseCheck.setAttribute('type', 'checkbox');
+                    courseCheck.addEventListener('change', (event) => updateOutsideCourses(event, nonComm));
+                    container.innerText = "I have taken " + nonComm;
+                    container.appendChild(courseCheck);
+                    courseDetails.appendChild(container);
+                });
+            }
+        }
+
+        if (course.ideas !== "NA") {
+            courseDetails.innerHTML += `
+                <p>IDEAs in Action Gen Ed: ${course.ideas}</p>
+            `;
+            if (disabled && course.ideas.includes("FY-SEMINAR")){
+                courseDetails.innerHTML += `
+                    <p style = "color: red;">You have already selected a First Year Seminar</p>
+                `;
+            }
+        }
+
+        lowDes.appendChild(courseDetails);
+    }
+
+    function clearCourses(){
+        //empties degreePlan and makes necessary visual updates
+        degreePlan = [];
+        sessionStorage.setItem('plan', JSON.stringify(degreePlan));
+        document.getElementById("course-plan").innerHTML = "";
+        updateChecks();
+    }
+
+    function sortAndFilter(grid){
+        //get variables assigned to checkboxes (for sort direction and filters), empty the passed-in grid, and refill with appropriate items in appropriate order
+        //This only supports AND search, not OR
+    
+        let filterM = document.getElementById('m-box-' + grid).checked;
+        let filterR = document.getElementById('r-box-' + grid).checked;
+        let filterH = document.getElementById('h-box-' + grid).checked;
+        let filterStart = false;
+        if (document.getElementById('starter-box-' + grid)){
+            filterStart = document.getElementById('starter-box-' + grid).checked;
+        }
+        let filters = [[filterM, "m"], [filterR, "r"], [filterH, "h"], [filterStart, "starter"]];
+        let returnList = [];
+
+        filter();
+        //sort the array
+        if(returnList.length !== 0){
+            if (document.getElementById(grid + '-sort').value == 'descend'){
+            returnList.sort((a, b) => (String(b.number)).substring(0, 3) - (String(a.number)).substring(0, 3));
+        }
+            else{
+                returnList.sort((a, b) => (String(a.number)).substring(0, 3) - (String(b.number)).substring(0, 3));
+            }
+        }
+
+        //update the grid
+        document.getElementById(grid).innerHTML = "";
+        returnList.forEach(course => {
+            let courseDiv = document.createElement('div');
+            courseDiv.addEventListener('click', selectBox);
+            if(grid == "lowerGrid"){
+                courseDiv.onclick = function(){
+                    populateDescription(course, "1", false);
+                };
+            }
+            if(grid == "upperGrid"){
+                courseDiv.onclick = function(){
+                    populateDescription(course, "2", false);
+                };
+            }
+            if(grid == "elecGrid"){
+                courseDiv.setAttribute('id', course.number);
+                courseDiv.onclick = function(){
+                    populateDescription(course, "3", false);
+                }
+            }
+            course.toDiv(courseDiv);
+            if (grid == 'elecGrid'){
+                courseDiv.setAttribute('id', course.number);
+            }
+            else{
+                courseDiv.setAttribute('id', 'C' + course.number);
+            }
+            document.getElementById(grid).appendChild(courseDiv);
+        });
+
+        function filter() {
+            let filtArray = [];
+            courseArray.forEach(course =>{
+                //a course is not selected in the event that the filter is desired anf the associated property is false
+                let desired = true;
+                filters.forEach(criterion => {
+                    if (criterion[0] && !course[criterion[1]]){
+                        desired = false;
+                    }
+                });
+                if (desired){
+                    filtArray.push(course);
+                }
+            })
+    
+            //let filtArray = courseArray.filter(course => course[property] == true);
+            filtArray.forEach(course =>{
+                if (!(returnList.some(item => item.number == course.number))){
+                    if (grid == "elecGrid" && !(degreePlan.some(item => item.number == course.number))){
+                        returnList.push(course);
+                    }
+                    else if (grid == 'lowerGrid' && course.number < 400){
+                        returnList.push(course);
+                    }
+                    else if (grid == 'upperGrid' && course.number >= 400){
+                        returnList.push(course);
+                    }
+                }
+            });
+        }
+        updateChecks();
+
+    }
+
+    function Course(number, name, starter, h, m, r, cel, mapc, mtpc, ocw, raa, newMedia, prereqs, ideas, description) {
+        this.number = number;
+        this.name = name;
+        this.starter = starter;
+        this.h = h;
+        this.m = m;
+        this.r = r;
+        this.mapc = mapc;
+        this.cel = cel;
+        this.ocw = ocw;
+        this.raa = raa;
+        this.mtpc = mtpc;
+        this.newMedia = newMedia;
+        this.prereqs = prereqs;
+        this.ideas = ideas;
+        this.description = description;
+        this.toDiv = function(elem) {
+            //uses properties of a given course to create a div representation of that course, preexisting course-class div is passed in as argument
+            elem.setAttribute('class', 'course');
+            const nameDiv = document.createElement('div');
+            nameDiv.setAttribute('class', 'name-area');
+            nameDiv.innerHTML = "<span>COMM<br>" + this.number + "</span>"
+
+            const specDiv = document.createElement('div');
+            specDiv.setAttribute('class', 'spec-area');
+            specDiv.innerHTML = "&nbsp";
+            if(this.m){
+                specDiv.innerHTML += "<div class='icon'>M</div>";
+            }
+            if(this.r){
+                specDiv.innerHTML += "<div class='icon'>R</div>";
+            }
+            if(this.h){
+                specDiv.innerHTML += "<div class='icon'>E</div>";
+            }
+
+            const pathDiv = document.createElement('div');
+            pathDiv.setAttribute('class', 'path-area');
+            if (this.cel){
+                pathDiv.innerHTML += "<div class='dot cel' ></div>";
+            }
+            if (this.mapc){
+                pathDiv.innerHTML += "<div class='dot mapc'></div>";
+            }
+            if(this.mtpc){
+                pathDiv.innerHTML += "<div class='dot mtpc'></div>";
+            }
+            if(this.ocw){
+                pathDiv.innerHTML += "<div class='dot ocw'></div>";
+            }
+            if(this.raa){
+                pathDiv.innerHTML += "<div class='dot raa'></div>";
+            }
+            if(this.ideas !== "NA"){
+                pathDiv.innerHTML += `<img src="Graphics/ideas-img-color.svg" alt="Ideas in Action" class = "ideas"/>`;
+            }
+
+            elem.appendChild(nameDiv);
+            elem.appendChild(specDiv);
+            elem.appendChild(pathDiv);
+            
+            elem.innerHTML += (`<div class="dropdown-content">` + this.name + `</div>`);
+            if(this.starter){
+                elem.style.backgroundColor = "#dbf0ff";
+            }
+        }
+    }
+
+</script>
+</body>
+</html>
